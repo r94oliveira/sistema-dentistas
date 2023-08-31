@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class especialidade extends Model
 {
     use HasFactory;
+    
+    public $timestamps = false;
 
     protected $fillable = [
         'id',

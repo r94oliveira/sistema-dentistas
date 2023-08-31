@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class dentista_especialidade extends Model
 {
     use HasFactory;
+    
+    public $timestamps = false;
 
     protected $fillable = [
        'especilidade_id',

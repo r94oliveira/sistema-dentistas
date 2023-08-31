@@ -9,11 +9,12 @@ class dentista extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
-       'id',
        'name',
        'email',
        'cro',
-       'cro_uf',
+       'cro_uf'
     ];
 }
