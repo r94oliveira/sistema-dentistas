@@ -26,7 +26,7 @@ class DentistaController extends Controller
 
         $newDentista = Dentista::create($data);
 
-        return redirect(route('dentista.index'));
+        return redirect(route('dentista.index'))->with('success', 'Dentista cadastrado com sucesso!');
 
     }
 

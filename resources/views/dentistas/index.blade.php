@@ -6,6 +6,14 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div>
+        @if(session()->has('success'))
+            <div>
+                {{session('success')}}
+            </div>
+        @endif
+    </div>
     <div>
 <div>
             <a href="{{route('dentista.cadastro')}}">Cadastrar um novo dentista</a>
