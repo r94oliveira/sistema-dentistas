@@ -12,12 +12,12 @@ class dentista extends Model
     public $timestamps = false;
 
     protected $fillable = [
-       'name',
-       'email',
-       'cro',
-       'cro_uf'
+        'name',
+        'email',
+        'cro',
+        'cro_uf'
     ];
- 
+
     public function especialidade()
     {
         return $this->belongsToMany(Especialidade::class, 'dentistas_especialidades');

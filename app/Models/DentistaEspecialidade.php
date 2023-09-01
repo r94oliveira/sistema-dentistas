@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class dentistaEspecialidade extends Model
 {
-    use HasFactory;
-    
-    public $timestamps = false;
-    protected $table = "dentistas_especialidades";
+  use HasFactory;
 
-    protected $fillable = [
-       'especialidade_id',
-       'dentista_id'
-     ];
+  public $timestamps = false;
+  protected $table = "dentistas_especialidades";
 
+  protected $fillable = [
+    'especialidade_id',
+    'dentista_id'
+  ];
 }

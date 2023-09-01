@@ -8,17 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class especialidade extends Model
 {
     use HasFactory;
-    
+
     public $timestamps = false;
 
     protected $fillable = [
         'id',
         'nome'
-     ];
+    ];
 
-     public function dentista()
+    public function dentista()
     {
         return $this->belongsToMany(Dentista::class, 'dentistas_especialidades');
     }
-
 }

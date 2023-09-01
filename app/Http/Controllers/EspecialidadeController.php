@@ -7,16 +7,19 @@ use App\Models\Especialidade;
 
 class EspecialidadeController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $especialidades = Especialidade::paginate(5)->fragment('especialidades');
         return view('especialidades.index', ['especialidades' => $especialidades]);
     }
 
-    public function cadastro(){
+    public function cadastro()
+    {
         return view('especialidades.cadastro');
     }
 
-    public function cadastrar(Request $request){
+    public function cadastrar(Request $request)
+    {
         $data = $request->validate([
             'nome' => 'required'
         ]);
@@ -24,14 +27,15 @@ class EspecialidadeController extends Controller
         $newEspecialidade = Especialidade::create($data);
 
         return redirect(route('especialidade.index'))->with('success', 'Especialidade cadastrada com sucesso!');
-
     }
 
-    public function edicao(Especialidade $especialidade){
+    public function edicao(Especialidade $especialidade)
+    {
         return view('especialidades.edicao', ['especialidade' => $especialidade]);
     }
 
-    public function editar(Especialidade $especialidade, Request $request){
+    public function editar(Especialidade $especialidade, Request $request)
+    {
         $data = $request->validate([
             'nome' => 'required'
         ]);
@@ -39,25 +43,24 @@ class EspecialidadeController extends Controller
         $especialidade->update($data);
 
         return redirect(route('especialidade.index'))->with('success', 'Especialidade editada com sucesso!');
-
     }
 
-    public function excluir(Especialidade $especialidade){
+    public function excluir(Especialidade $especialidade)
+    {
         $especialidade->delete();
         return redirect(route('especialidade.index'))->with('success', 'Especialidade excluída com sucesso!');
     }
 
-    public function buscar(Request $request) {
+    public function buscar(Request $request)
+    {
 
         if (request('search')) {
-            $especialidades = Especialidade::where('nome', 'like', '%'.request('search').'%')
-            ->paginate(5);
+            $especialidades = Especialidade::where('nome', 'like', '%' . request('search') . '%')
+                ->paginate(5);
         } else {
             $especialidades = Especialidade::paginate(5)->fragment('especialidades');
         }
 
         return view('especialidades.index', ['especialidades' => $especialidades]);
-
     }
-   
 }
