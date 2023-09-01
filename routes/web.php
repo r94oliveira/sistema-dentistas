@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DentistaController;
 use App\Http\Controllers\EspecialidadeController;
+use App\Http\Controllers\DentistaEspecialidadeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::post('/dentista', [DentistaController::class, 'cadastrar'])->name('dentis
 Route::get('/dentista/{dentista}/edicao', [DentistaController::class, 'edicao'])->name('dentista.edicao');
 Route::put('/dentista/{dentista}/editar', [DentistaController::class, 'editar'])->name('dentista.editar');
 Route::delete('/dentista/{dentista}/excluir', [DentistaController::class, 'excluir'])->name('dentista.excluir');
+Route::get('/dentista/buscar', [DentistaController::class, 'buscar'])->name('dentista.buscar');
 
 Route::get('/especialidade', [EspecialidadeController::class, 'index'])->name('especialidade.index');
 Route::get('/especialidade/cadastro', [EspecialidadeController::class, 'cadastro'])->name('especialidade.cadastro');
@@ -32,3 +34,5 @@ Route::post('/especialidade', [EspecialidadeController::class, 'cadastrar'])->na
 Route::get('/especialidade/{especialidade}/edicao', [EspecialidadeController::class, 'edicao'])->name('especialidade.edicao');
 Route::put('/especialidade/{especialidade}/editar', [EspecialidadeController::class, 'editar'])->name('especialidade.editar');
 Route::delete('/especialidade/{especialidade}/excluir', [EspecialidadeController::class, 'excluir'])->name('especialidade.excluir');
+Route::get('/especialidade/buscar', [EspecialidadeController::class, 'buscar'])->name('especialidade.buscar');
+

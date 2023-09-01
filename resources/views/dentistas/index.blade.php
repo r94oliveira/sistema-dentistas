@@ -69,19 +69,18 @@
   </div>
   <!-- search -->
   <div class="container">
-    <div class="row mb-3 d-flex justify-content-end align-items-end">
+        <div class="row mb-3 d-flex justify-content-end align-items-end">
 
-      <div class="col-12 col-lg-6">
-        <div class="input-group rounded">
-          <input type="search" class="form-control rounded" placeholder="Digite para buscar..."
-          aria-label="Search" aria-describedby="search-addon" />
-          <span class="btn btn-secondary" id="search-addon">
-              Pesquisar
-          </span>
+          <div class="form-inline">
+            <div class="input-group rounded ">
+              <form method="get" action="{{route('dentista.buscar')}}">
+              <input  type="search" class="form-control rounded" placeholder="Digite para buscar..." name="search" />
+              <input class="btn btn-secondary" type="submit" value="Pesquisar" />
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>        
+      </div>        
   <div>
         
     </div>

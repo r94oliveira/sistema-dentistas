@@ -53,4 +53,20 @@ class DentistaController extends Controller
         return redirect(route('dentista.index'))->with('success', 'Dentista excluído com sucesso!');
     }
 
+    public function buscar(Request $request) {
+
+        if (request('search')) {
+            $dentistas = Dentista::where('name', 'like', '%'.request('search').'%')
+            ->orWhere('email', 'like', '%'.request('search').'%')
+            ->orWhere('cro', 'like', '%'.request('search').'%')
+            ->orWhere('cro_uf', 'like', '%'.request('search').'%')
+            ->paginate(5);
+        } else {
+            $dentistas = Dentista::paginate(5)->fragment('dentistas');
+        }
+
+        return view('dentistas.index', ['dentistas' => $dentistas]);
+
+    }
+
 }

@@ -47,4 +47,17 @@ class EspecialidadeController extends Controller
         return redirect(route('especialidade.index'))->with('success', 'Especialidade excluída com sucesso!');
     }
 
+    public function buscar(Request $request) {
+
+        if (request('search')) {
+            $especialidades = Especialidade::where('nome', 'like', '%'.request('search').'%')
+            ->paginate(5);
+        } else {
+            $especialidades = Especialidade::paginate(5)->fragment('especialidades');
+        }
+
+        return view('especialidades.index', ['especialidades' => $especialidades]);
+
+    }
+   
 }
