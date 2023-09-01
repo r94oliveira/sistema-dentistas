@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('destistas_especialidades', function (Blueprint $table) {
+        Schema::create('dentistas_especialidades', function (Blueprint $table) {
             $table->integer('especilidade_id');
             $table->integer('dentista_id');
         });
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('destistas_especialidades');
+        Schema::dropIfExists('dentistas_especialidades');
     }
 };
