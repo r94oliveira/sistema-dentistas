@@ -8,7 +8,7 @@ use App\Models\Especialidade;
 class EspecialidadeController extends Controller
 {
     public function index(){
-        $especialidades = Especialidade::all();
+        $especialidades = Especialidade::paginate(5)->fragment('especialidades');
         return view('especialidades.index', ['especialidades' => $especialidades]);
     }
 

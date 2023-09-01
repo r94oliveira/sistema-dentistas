@@ -8,7 +8,7 @@ use App\Models\Dentista;
 class DentistaController extends Controller
 {
     public function index(){
-        $dentistas = Dentista::all();
+        $dentistas = Dentista::paginate(5)->fragment('dentistas');
         return view('dentistas.index', ['dentistas' => $dentistas]);
     }
 
