@@ -36,3 +36,6 @@ Route::put('/especialidade/{especialidade}/editar', [EspecialidadeController::cl
 Route::delete('/especialidade/{especialidade}/excluir', [EspecialidadeController::class, 'excluir'])->name('especialidade.excluir');
 Route::get('/especialidade/buscar', [EspecialidadeController::class, 'buscar'])->name('especialidade.buscar');
 
+Route::get('/dentistasEspecialidades/{dentista?}/especialidades', [DentistaEspecialidadeController::class, 'index'])->name('dentistasEspecialidades.index');
+Route::post('/dentistasEspecialidades/{dentista?}/adicionar', [DentistaEspecialidadeController::class, 'adicionar'])->name('dentistasEspecialidades.adicionar');
+Route::delete('/dentistasEspecialidades/{dentista?}/remover', [DentistaEspecialidadeController::class, 'remover'])->name('dentistasEspecialidades.remover');

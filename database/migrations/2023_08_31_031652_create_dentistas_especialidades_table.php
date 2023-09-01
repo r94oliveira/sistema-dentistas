@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dentistas_especialidades', function (Blueprint $table) {
-            $table->integer('especilidade_id');
-            $table->integer('dentista_id');
+            $table->integer('especialidade_id')->unsigned();
+            $table->integer('dentista_id')->unsigned();
+            $table->foreign('especialidade_id')->references('id')->on('especialidades')->onDelete('cascade');
+            $table->foreign('dentista_id')->references('id')->on('dentistas')->onDelete('cascade');
         });
     }
 

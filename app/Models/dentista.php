@@ -17,4 +17,9 @@ class dentista extends Model
        'cro',
        'cro_uf'
     ];
+ 
+    public function especialidade()
+    {
+        return $this->belongsToMany(Especialidade::class, 'dentistas_especialidades');
+    }
 }

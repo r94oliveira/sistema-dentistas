@@ -16,4 +16,9 @@ class especialidade extends Model
         'nome'
      ];
 
+     public function dentista()
+    {
+        return $this->belongsToMany(Dentista::class, 'dentistas_especialidades');
+    }
+
 }

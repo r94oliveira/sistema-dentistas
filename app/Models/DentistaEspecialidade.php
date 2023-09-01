@@ -13,7 +13,7 @@ class dentistaEspecialidade extends Model
     protected $table = "dentistas_especialidades";
 
     protected $fillable = [
-       'especilidade_id',
+       'especialidade_id',
        'dentista_id'
      ];
 
