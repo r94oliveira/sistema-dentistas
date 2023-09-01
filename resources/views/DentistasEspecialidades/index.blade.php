@@ -13,6 +13,15 @@
 </head>
 
 <body>
+
+  <div>
+    @if(session()->has('success'))
+    <div>
+      {{session('success')}}
+    </div>
+    @endif
+  </div>
+
   <!-- menu -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,13 +55,72 @@
     <!-- content -->
     <div class="jumbotron">
       <div class="container">
-        <h1>
-          Bem vindo(a)!
-        </h1>
+
         <p>
-          A plataforma para gerenciamento de profissionais da odontologia e suas
-          especialidades.
+          <b>Profissional:</b> {{$dentista->name}}
         </p>
+        <p>
+          <b>Email:</b> {{$dentista->email}}
+        </p>
+        <p>
+          <b>CRO:</b> {{$dentista->cro}}
+        </p>
+        <p>
+          <b>CRO/UF:</b> {{$dentista->cro_uf}}
+        </p>
+        <p>
+          <b>Especialidades:</b>
+
+          @foreach($dentistaEspecialidades as $dentistaEspecialidade)
+          {{ $dentistaEspecialidade->nome }}
+          @endforeach
+        </p>
+
+      </div>
+    </div>
+    </div>
+
+    </div>
+    <div class="container">
+      <div class="table-responsive">
+
+        <!--Table-->
+        <table class="table">
+          <!--Table head-->
+          <thead>
+            <tr>
+              <th>Especialidade</th>
+              <th>Adicionar</th>
+              <th>Remover</th>
+            </tr>
+          </thead>
+          <!--Table body-->
+          <tbody>
+            @foreach($especialidades as $especialidade)
+            <tr>
+              <td>{{$especialidade->nome}}</td>
+
+              <td>
+
+                <form method="post" action="{{route('dentistasEspecialidades.adicionar', ['especialidade' => $especialidade, 'dentista' => $dentista])}}">
+                  @csrf
+                  @method('post')
+                  <input type="hidden" name="especialidade_id" value="{{$especialidade->id}}" />
+                  <input class="btn btn-dark" type="submit" value="Adicionar" />
+                </form>
+              </td>
+              <td>
+                <form method="post" action="{{route('dentistasEspecialidades.remover', ['especialidade' => $especialidade,'dentista' => $dentista])}}">
+                  @csrf
+                  @method('delete')
+                  <input type="hidden" name="especialidade_id" value="{{$especialidade->id}}" />
+                  <input class="btn btn-dark" type="submit" value="Remover" />
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -73,5 +141,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
 </body>
+
 
 </html>

@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
   <!-- menu -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -47,15 +48,83 @@
     <div class="jumbotron">
       <div class="container">
         <h1>
-          Bem vindo(a)!
+          Especialidades
         </h1>
         <p>
-          A plataforma para gerenciamento de profissionais da odontologia e suas
-          especialidades.
+          Faça a edição, exclusão ou adição de especialidades.
         </p>
+        <a type="button" class="btn btn-secondary" href="{{route('especialidade.cadastro')}}">Cadastrar especialidade</a>
       </div>
     </div>
+    </div>
+    <!-- search -->
 
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          @if(session()->has('success'))
+          <div class="text-success">
+            {{session('success')}}
+          </div>
+          @endif
+        </div>
+        <div class="col mb-3 d-flex justify-content-end align-items-end">
+
+          <div class="form-inline">
+            <div class="input-group rounded ">
+              <form method="get" action="{{route('especialidade.buscar')}}">
+                <input type="search" class="form-control rounded" placeholder="Digite para buscar..." name="search" />
+                <input class="btn btn-secondary" type="submit" value="Pesquisar" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+
+    </div>
+    <div class="container">
+      <div class="table-responsive">
+
+        <!--Table-->
+        <table class="table">
+          <!--Table head-->
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Editar</th>
+              <th>Deletar</th>
+            </tr>
+          </thead>
+          <!--Table body-->
+          <tbody>
+            @foreach($especialidades as $especialidade)
+            <tr>
+              <td>{{$especialidade->nome}}</td>
+              <td>
+                <a class="btn btn-dark" href="{{route('especialidade.edicao', ['especialidade' => $especialidade])}}">Editar</a>
+              </td>
+              <td>
+                <form method="post" action="{{route('especialidade.excluir', ['especialidade' => $especialidade])}}">
+                  @csrf
+                  @method('delete')
+                  <input class="btn btn-dark" type="submit" value="Excluir" />
+                </form>
+              </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="container">
+      <!-- pagination -->
+      <div class="d-flex justify-content-center align-items-center">
+        {{ $especialidades->links() }}
+      </div>
+    </div>
   </main>
   <!-- footer -->
   <footer class="text-muted">
@@ -73,5 +142,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
 </body>
+
 
 </html>

@@ -13,6 +13,15 @@
 </head>
 
 <body>
+
+  <div>
+    @if(session()->has('success'))
+    <div>
+      {{session('success')}}
+    </div>
+    @endif
+  </div>
+
   <!-- menu -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -47,15 +56,26 @@
     <div class="jumbotron">
       <div class="container">
         <h1>
-          Bem vindo(a)!
+          Especialidade
         </h1>
         <p>
-          A plataforma para gerenciamento de profissionais da odontologia e suas
-          especialidades.
+          Faça um novo cadastro no sistema
         </p>
+        <form method="post" action="{{route('especialidade.cadastrar')}}">
+          @csrf
+          @method('post')
+          <div class="form-group">
+            <div>
+              <label class="mt-2">Nome</label>
+              <input type="text" name="nome" class="form-control" placeholder="Digite o nome da especialidade" required />
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <input type="submit" class="btn btn-secondary mt-3 w-50" value="Cadastrar" />
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-
   </main>
   <!-- footer -->
   <footer class="text-muted">

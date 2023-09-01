@@ -13,6 +13,15 @@
 </head>
 
 <body>
+
+  <div>
+    @if(session()->has('success'))
+    <div>
+      {{session('success')}}
+    </div>
+    @endif
+  </div>
+
   <!-- menu -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -47,15 +56,39 @@
     <div class="jumbotron">
       <div class="container">
         <h1>
-          Bem vindo(a)!
+          Dentista
         </h1>
         <p>
-          A plataforma para gerenciamento de profissionais da odontologia e suas
-          especialidades.
+          Faça o cadastro no sistema
         </p>
+
+        <form method="post" action="{{route('dentista.cadastrar')}}">
+          @csrf
+          @method('post')
+          <div class="form-group">
+            <div>
+              <label class="mt-2">Nome</label>
+              <input type="text" name="name" class="form-control" placeholder="Digite seu nome" required />
+            </div>
+            <div>
+              <label class="mt-2">Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Digite seu email" required />
+            </div>
+            <div>
+              <label class="mt-2">CRO</label>
+              <input type="number" name="cro" class="form-control" placeholder="Digite seu CRO" required />
+            </div>
+            <div>
+              <label class="mt-2">CRO/UF</label>
+              <input type="text" name="cro_uf" class="form-control" placeholder="Digite a UF do CRO" maxlength="2" required />
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <input type="submit" class="btn btn-secondary mt-3 w-50" value="Cadastrar" />
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-
   </main>
   <!-- footer -->
   <footer class="text-muted">
@@ -73,5 +106,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
 </body>
+
 
 </html>
