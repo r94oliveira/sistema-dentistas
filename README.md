@@ -13,7 +13,7 @@
 <h2 align="center">Preview</h2><br>
 
 <p align="center">
-   <img src="./resources\img\sistema-odonto.png" width="600px" alt="Odontologia"/>
+   <img src="./resources\img\sistema-odonto.png" width="300px" alt="Odontologia"/>
 </p>
 
 ---
